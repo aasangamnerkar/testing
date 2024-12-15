@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Profile</h2>
+<img src="/{{ user[5] if user[5] else 'static/images/default.jpg' }}" alt="Profile Picture" style="width:150px;height:150px;">
+<form method="POST" enctype="multipart/form-data" action="{{ url_for('profile') }}">
+    <p>Email: {{ user[1] }}</p>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ user[2] }}">
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" value="{{ user[3] }}">
+
+    <label for="bio">Bio:</label>
+    <textarea id="bio" name="bio">{{ user[4] }}</textarea>
+
+    <label for="profile_picture">Profile Picture:</label>
+    <input type="file" id="profile_picture" name="profile_picture">
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
